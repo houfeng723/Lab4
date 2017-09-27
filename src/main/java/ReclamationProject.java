@@ -7,20 +7,36 @@
  * 4. Add comments and Javadoc comments where needed
  * 5. Remove unnecessary comments as appropriate
  */
+/**
+ * this class contains a function that print the LCS of two strings.
+ */
+public class ReclamationProject {
 
-public class ReclamationProject
-{
-    static String doit(String a,String b){
-        if (a.length() > b.length()){
-            String c = a; // TODO: set c to a
-            a=b; b=c;}
-        String r = (a.equals(b)) ? "" : ""; // I love the ternary operator!
-        /*
-         * For loop with i
-         */
-        for (int i = 0; i < a.length(); i++) { for (int j = a.length() - i; j > 0; j--) {
-                for (int k = 0; k < b.length()- j; k++) {
-                    r = (a.regionMatches(i, b, k, j) && j >r.length()) ? a.substring(i,i + j) : r; // Do it!
-                        }} // Ah yeah
-        } return r; }
+    /**
+     * this function is to print the LCS of two strings.
+     * @param a the first input string
+     * @param b the second input string
+     * @return LCS
+     */
+    static String doit(final String a, final String b) {
+        String str1 = a;
+        String str2 = b;
+
+        if (str1.length() > str2.length()) {
+            String temp = str1;
+            str1 = str2;
+            str2 = temp;
+        }
+        String r =  "";
+
+        for (int i = 0; i < str1.length(); i++) {
+            for (int j = str1.length() - i; j > 0; j--) {
+                for (int k = 0; k < str2.length() - j; k++) {
+                    if (str1.regionMatches(i, str2, k, j) && j > r.length()) {
+                        r = str1.substring(i, i + j);
+                    }
+                }
+            }
+        } return r;
+    }
 }
